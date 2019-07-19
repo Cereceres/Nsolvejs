@@ -15,10 +15,6 @@ let assert = require('assert'),
     initialpoint = 0.2,
     interval = [ -3, 5 ];
 // Defining a suite of tests
-const fitted = JNsolve.fit.best(test_array, test_query, test_y, {
-    smoothing: false,
-    noiseeliminate: false
-});
 Number.prototype.truncate = function(n) {
     return Math.floor(this * Math.pow(10, n)) / Math.pow(10, n);
 };
@@ -72,33 +68,6 @@ describe('JNsolve Module numeric values function test.', () => {
             assert.equal(JNsolve.calculusN.findroot(f, interval, initialpoint)
                 .method, 'Newton_Raphson_Higherorder'); // should returns true
         });
-    it('The best fit should be the exponential.', () => {
-        assert.equal(fitted.fit.best.name, 'exponential'); // should returns true
-    });
-    it('The best fit error should be.', () => {
-        assert.equal(fitted.fit.best.error.truncate(2), 2.5); // should returns true
-    });
-    it('The best fit should define the function fitted', () => {
-        assert.equal(typeof fitted.fit.best.f, 'function'); // should returns true
-    });
-    it('The ans_ofX should be a array.', () => {
-        assert.equal(Array.isArray(fitted.ans_ofX), true); // should returns true
-    });
-    it('The first result of ans_ofX should be 4.81 .', () => {
-        assert.equal(fitted.ans_ofX[0][0].truncate(2), 4.73); // should returns true
-    });
-    it('The ans_ofY should be a array.', () => {
-        assert.equal(Array.isArray(fitted.ans_ofY), true); // should returns true
-    });
-    it('The first result of ans_ofY should be 62.59 .', () => {
-        assert.equal(fitted.ans_ofY[0][1].truncate(2), 63.08); // should returns true
-    });
-    it('The best fit used should be the exponential', () => {
-        assert.equal(fitted.fitUsed, 'exponential'); // should returns true
-    });
-    it('The bestfit object define a function of the fit.', () => {
-        assert.equal(typeof fitted.fit.best.f, 'function'); // should returns true
-    });
 });
 
 describe('derivative numeric.', () => {

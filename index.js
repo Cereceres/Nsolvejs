@@ -1,5 +1,4 @@
 const utils = require('./utils/utils');
-const bestfit = require('./fit/bestfit');
 const methodN = require('./lib/methodN');
 const defaultOptions = {
     npointsDNumeric: 1000,
@@ -16,10 +15,6 @@ const nsolveqn = function(g, interval, initialpoint, options = defaultOptions) {
     options.method = options.method || 'Newton_Raphson';
     const method = options.method;
     return methodN[method](g, interval, initialpoint, options);
-};
-
-nsolveqn.fit = {
-    best: bestfit
 };
 
 nsolveqn.calculusN = {
