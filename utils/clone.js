@@ -1,12 +1,10 @@
-'use strict';
+
 function cloneObject(obj) {
-    if (obj === null || typeof obj !== 'object')
-        return obj;
+  if (obj === null || typeof obj !== 'object') return obj;
 
-    const temp = obj.constructor(); // give temp the original obj's constructor
-    for (const key in obj)
-        temp[key] = cloneObject(obj[key]);
+  const temp = obj.constructor(); // give temp the original obj's constructor
+  for (const key in obj) temp[key] = cloneObject(obj[key]);
 
-    return temp;
+  return temp;
 }
 module.exports = cloneObject;

@@ -1,5 +1,5 @@
 # Nsolvejs
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/4yopping/Nsolvejs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![Build Status](https://travis-ci.org/4yopping/Nsolvejs.svg?branch=master)](https://travis-ci.org/4yopping/Nsolvejs) [![Inline docs](http://inch-ci.org/github/4yopping/Nsolvejs.svg?branch=master&style=shields)](http://inch-ci.org/github/4yopping/Nsolvejs) [![npm version](https://badge.fury.io/js/nsolvejs.svg)](http://badge.fury.io/js/nsolvejs) [![Stories in Ready](https://badge.waffle.io/4yopping/Nsolvejs.svg?label=ready&title=Ready)](http://waffle.io/4yopping/Nsolvejs) ![Dependencies](https://david-dm.org/4yopping/Nsolvejs.svg)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/4yopping/Nsolvejs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![Build Status](https://travis-ci.org/4yopping/Nsolvejs.svg?branch=master)](https://travis-ci.org/4yopping/Nsolvejs)
 
 [![Circle CI](https://circleci.com/gh/4yopping/Nsolvejs.svg?style=svg)](https://circleci.com/gh/4yopping/Nsolvejs)
 
@@ -35,24 +35,24 @@ var Nsolvejs = require('nsolvejs');
 #### `Nsolvejs.calculusN.D`
 Object with differents numerics methods to calculate the derivative of a function.
 
-##### `Nsolvejs.calculusN.D.Nof(Function,Number,Array)`
+##### `Nsolvejs.calculusN.D.NumericalDerivateof(Function,Number,Array)`
 Constructor that generates the numeric derivative of `Function`=> f(x) with a  `Number` => N given of divisions in an interval  `Array` => [a,b].
 
 ```js
-Nsolvejs.D.Nof(f,1000,[2,7])
+Nsolvejs.D.NumericalDerivateof(f,1000,[2,7])
 ```
 
-##### `Nsolvejs.calculusN.D.Nof.f_x`
+##### `Nsolvejs.calculusN.D.NumericalDerivateof.f_x`
 Instance method what is the derivative numerical of  `Function` with a   `Number` given of divisions in an interval   `Array`.
 
 ```js
-Nsolvejs.D.Nof(f,1000,[2,7]).f_x(3)
+Nsolvejs.D.NumericalDerivateof(f,1000,[2,7]).f_x(3)
 ```
 
 is a aproximation to the derivative of f (df_dx) on 3 with the 1000 divisions in the interval [2,7]. Is available another method that calculate the numerical derivative calculating the dx_i in a optimazed way, dx_i=h/sqrt(1+dfdx^2) with h=(b-a)/N.
 
-##### `Nsolvejs.calculusN.D_opt.Nof(Function,Number,Array)`
-##### `Nsolvejs.calculusN.D_opt.Nof.f_x`
+##### `Nsolvejs.calculusN.D_opt.NumericalDerivateof(Function,Number,Array)`
+##### `Nsolvejs.calculusN.D_opt.NumericalDerivateof.f_x`
 ##### `Nsolvejs.calculusN.D.linear_interpolation(Array)`
 Is a constructor that generates the numeric linear interpolation of data given in `Array`= [[x_1,y_2],[x_2,y_3],...[x_n,y_n]] in the interval [x_1,x_n].
 
@@ -102,7 +102,7 @@ The `Object`is default options and are { npointsDNumeric : 1000, precision : 0.0
 #### `Nsolvejs.fit.best(Array[,Array,Array,Object,Function])`
 ![Plot Data with Best fit](./plots/plotdata.png)
 
-Calculate the best fit using the first `Array`= [[x_1,y_1,z_1...],[x_2,y_2,z_2...],...[x_n,y_n,z_n,...]] argument as data input (if the fit is already calculated before you can pass it instead), the second  `Array` = [z_1,z_2...z_m] argument are the values of x's for which is necessary calculate their y`s values respectively, the third argument are the values of "y" for which is queried the values of "x". The properties of options object are smoothing (default = True), noiseeliminate (default = True), smoothingmethod (default ='exponential' only by moment), alpha (default = 0.8) and fits_name (the fits function) to use: the availables function are inverse (a/(b+x)), linear (ax+b), exponential (a_e^(bx)), logarithmic (a+b Log(x)), polynomial (ax^2+bx+c), sqrt (a_ sqrt(x)+b) and power (ax^b), if not specified take all function availables, using (array) property specified wich column of data in Array is taken to do the fist. The noiseeliminate method eliminate data that are beyond of 3.5 standard deviation from mean[(99.95 % Reliability if data have a normal distribution)](http://onlinestatbook.com/2/calculators/normal_dist.html), does that make a loop filter until that not one data is out of this limit. Return a object with the properties: ans_ofY,ans_ofX, fitUsed, fitEquationUsed, fitParamsUsed, fitPointsUsed, fitWithError and fit. The last parameter is a callback function that receive as only parameter the fit self.
+Calculate the best fit using the first `Array`= [[x_1,y_1,z_1...],[x_2,y_2,z_2...],...[x_n,y_n,z_n,...]] argument as data input (if the fit is already calculated before you can pass it instead), the second  `Array` = [z_1,z_2...z_m] argument are the values of x's for which is necessary calculate their y`s values respectively, the third argument are the values of "y" for which is queried the values of "x". The properties of options object are smoothing (default = True), noiseeliminate (default = True), smoothingmethod (default ='exponential' only by moment), alpha (default = 0.8) and fits_name (the fits function) to use: the availables function are inverse (a/(b+x)), linear (ax+b), exponential (a_e^(bx)), logarithmic (a+b Log(x)), polynomial (ax^2+bx+c), sqrt (a_ sqrt(x)+b) and power (ax^b), if not specified take all function availables, using (array) property specified which column of data in Array is taken to do the fist. The noiseeliminate method eliminate data that are beyond of 3.5 standard deviation from mean[(99.95 % Reliability if data have a normal distribution)](http://onlinestatbook.com/2/calculators/normal_dist.html), does that make a loop filter until that not one data is out of this limit. Return a object with the properties: ans_ofY,ans_ofX, fitUsed, fitEquationUsed, fitParamsUsed, fitPointsUsed, fitWithError and fit. The last parameter is a callback function that receive as only parameter the fit self.
 
 ```js
 array_to_fit =[[0,4,40],[1,-2,48],[3,9,56],[4,120,70]];
@@ -136,17 +136,13 @@ Nsolvejs.bestfit(array_to_fit,array_of_x,array_of_y );
      inverse: { regression: [Object], error: 2.05844894339866 },
      best: { name: 'inverse', error: 2.05844894339866, f: [Function] } } }
 ```
-
-
-[![Throughput Graph](https://graphs.waffle.io/4yopping/Nsolvejs/throughput.svg)](https://waffle.io/4yopping/Nsolvejs/metrics)
-
 ## Contributing
-In lieu of a formal style guide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code.  For any bugs report please contact to me via e-mail: dev@futurecommerce.mx.
+In lieu of a formal style guide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code.  For any bugs report please contact to me via e-mail: jesus.edelcereceres@gmail.com.
 
 ## Licence
 The MIT License (MIT)
 
-Copyright (c) 2015 Jesús Edel Cereceres with Andrés González and Marco Godínez as collaborators, 4yopping and all the related trademarks.
+Copyright (c) Jesus Cereceres all the related trademarks.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

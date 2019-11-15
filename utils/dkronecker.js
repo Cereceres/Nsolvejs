@@ -1,6 +1,6 @@
-'use strict';
-module.exports = function(i, j) {
-    if (i === j) return 1;
 
-    return 0;
+module.exports = function (i, j) {
+  if (i === j) return 1;
+
+  return 0;
 };
